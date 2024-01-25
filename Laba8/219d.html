@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    canvas {
+      border: 1px solid #000;
+      box-shadow: 0px 5px 50px 0px rgba(34, 39, 80, 0.15);
+    }
+  </style>
+  <title>2.1.9.D</title>
+</head>
+<body>
+  <canvas id="myCanvas" width="800" height="600"></canvas>
+
+  <script>
+    const canvas = document.getElementById('myCanvas');
+    const ctx = canvas.getContext('2d');
+  
+    let sunVisible = true;
+  
+    function drawSun() {
+      ctx.beginPath();
+      ctx.arc(200, 100, 50, 0, 2 * Math.PI);
+      ctx.fillStyle = 'yellow';
+      ctx.fill();
+    }
+  
+    function drawMoon() {
+      ctx.beginPath();
+      ctx.arc(200, 100, 50, 0, 2 * Math.PI);
+      ctx.fillStyle = 'lightgray';
+      ctx.fill();
+    }
+  
+    function drawHouse() {
+        ctx.fillStyle = 'rgba(89, 66, 27)';
+      ctx.fillRect(300, 200, 200, 200);
+      ctx.beginPath();
+      ctx.moveTo(300, 200);
+      ctx.lineTo(400, 100);
+      ctx.lineTo(500, 200);
+      ctx.closePath();
+      ctx.fillStyle = 'rgba(89, 66, 27)';
+      ctx.fill();
+    }
+  
+    function drawTree() {
+      ctx.fillStyle = 'brown';
+      ctx.fillRect(600, 300, 20, 100);
+      ctx.fillStyle = 'lightgreen';
+      ctx.beginPath();
+      ctx.arc(610, 300, 50, 0, Math.PI * 2, true);
+      ctx.closePath();
+      ctx.fill();
+    }
+
+    function drawGround() {
+        ctx.fillStyle = 'green'
+        ctx.fillRect(0, 300, 800, 300)
+    }
+
+    function drawSky() {
+        ctx.fillStyle = 'lightblue'
+        ctx.fillRect(0, 0, 800, 300)
+    }
+
+    function drawSkyn() {
+        ctx.fillStyle = 'darkblue'
+        ctx.fillRect(0, 0, 800, 300)
+    }
+
+    function drawWindow() {
+        ctx.fillStyle = 'lightblue'
+        ctx.fillRect(375, 275, 50, 50)
+    }
+
+    function drawWindown() {
+        ctx.fillStyle = 'lightyellow'
+        ctx.fillRect(375, 275, 50, 50)
+    }
+  
+    function draw() {
+      ctx.clearRect(0, 0, 800, 600);
+      
+  
+      if (sunVisible) {
+        drawSky();
+        drawSun();
+        drawGround();
+        drawHouse();
+        drawWindow();
+        drawTree();
+      } else {
+        drawSkyn();
+        drawMoon();
+        drawGround();
+        drawHouse();
+        drawWindown();
+        drawTree();
+      }
+    }
+  
+    setInterval(function() {
+      sunVisible = !sunVisible;
+      draw();
+    }, 1000);
+  
+  </script>
+</body>
+</html>
